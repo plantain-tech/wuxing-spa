@@ -1,65 +1,107 @@
-import Image from "next/image";
+const services = [
+  { name: "Reflexology", duration: "60 min", price: "$79" },
+  { name: "Acupressure", duration: "60 min", price: "$89" },
+  { name: "Chair Acupressure", duration: "30 min", price: "$49" },
+  { name: "Detox", duration: "75 min", price: "$109" },
+];
+
+const therapists = [
+  { nick: "Master Lin", specialty: "Deep pressure recovery" },
+  { nick: "May", specialty: "Reflexology & stress relief" },
+  { nick: "Chen", specialty: "Shoulder/neck reset" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      <header className="nav-shell">
+        <div className="container nav">
+          <div className="brand">Wuxing Spa</div>
+          <nav>
+            <a href="#services">Services</a>
+            <a href="#experts">Experts</a>
+            <a href="#inspire">Store Inspiration</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div className="actions">
+            <a className="ghost" href="/gift-cards">Gift Card</a>
+            <a className="btn" href="/booking">Book Now</a>
+          </div>
+        </div>
+      </header>
+
+      <section className="hero">
+        <div className="hero-overlay" />
+        <div className="container hero-content">
+          <p className="kicker">AUTHENTIC CHINESE ACUPRESSURE</p>
+          <h1>Calm your body. Clear your mind.</h1>
+          <p>
+            A clean, breathable, modern spa experience inspired by traditional kung fu
+            acupressure and reflexology techniques.
           </p>
+          <div className="hero-cta">
+            <a className="btn" href="/booking">Book Now</a>
+            <a className="ghost light" href="/gift-cards">Get a Gift Card</a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="services" className="container section">
+        <h2>Signature Services</h2>
+        <div className="grid cards">
+          {services.map((s) => (
+            <article key={s.name} className="card service-card">
+              <div className="img" />
+              <div className="pad">
+                <h3>{s.name}</h3>
+                <p>{s.duration}</p>
+                <div className="row">
+                  <strong>{s.price}</strong>
+                  <a href="/booking">Book Now</a>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="experts" className="container section">
+        <h2>Expert Therapists</h2>
+        <div className="grid experts">
+          {therapists.map((t) => (
+            <article key={t.nick} className="card pad">
+              <h3>{t.nick}</h3>
+              <p>{t.specialty}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="inspire" className="container section">
+        <h2>Store Inspiration</h2>
+        <div className="scroll-row">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <figure key={n} className="polaroid">
+              <div className="photo" />
+              <figcaption>Wuxing Store #{n}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="container section card pad contact">
+        <h2>Visit Us</h2>
+        <p>
+          <a href="https://maps.google.com/?q=KungFu+Massage+Spa" target="_blank">123 Serenity Ave, New York, NY</a>
+        </p>
+        <p><a href="tel:+17344477291">+1 (734) 447-7291</a></p>
+        <p><a href="mailto:hello@wuxingspa.com">hello@wuxingspa.com</a></p>
+      </section>
+
+      <footer className="container footer">
+        <span>© {new Date().getFullYear()} Wuxing Spa</span>
+        <a href="/admin/login">Admin Portal</a>
+      </footer>
+    </main>
   );
 }
