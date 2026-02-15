@@ -61,6 +61,7 @@ export default function Home() {
               <option value="zh">中文</option>
             </select>
             <a className="ghost" href="/gift-cards">{t.gift}</a>
+            <a className="ghost" href="/login">Login</a>
             <a className="btn" href="/booking">{t.book}</a>
           </div>
         </div>
