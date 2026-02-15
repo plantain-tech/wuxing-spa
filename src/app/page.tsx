@@ -1,3 +1,32 @@
+"use client";
+
+import { useState } from "react";
+
+const copy = {
+  en: {
+    services: "Services",
+    experts: "Experts",
+    inspiration: "Store Inspiration",
+    contact: "Contact",
+    gift: "Gift Card",
+    book: "Book Now",
+    kicker: "AUTHENTIC CHINESE ACUPRESSURE",
+    title: "Calm your body. Clear your mind.",
+    subtitle: "A clean, breathable, modern spa experience inspired by traditional kung fu acupressure and reflexology techniques.",
+  },
+  zh: {
+    services: "服务",
+    experts: "技师",
+    inspiration: "门店灵感",
+    contact: "联系",
+    gift: "礼品卡",
+    book: "立即预约",
+    kicker: "正宗中式穴位按摩",
+    title: "放松身体，清空压力。",
+    subtitle: "现代、通透、专业的按摩体验，融合传统功夫推拿与足底反射疗法。",
+  },
+} as const;
+
 const services = [
   { name: "Reflexology", duration: "60 min", price: "$79" },
   { name: "Acupressure", duration: "60 min", price: "$89" },
@@ -12,20 +41,27 @@ const therapists = [
 ];
 
 export default function Home() {
+  const [lang, setLang] = useState<"en" | "zh">("en");
+  const t = copy[lang];
+
   return (
     <main>
       <header className="nav-shell">
         <div className="container nav">
           <div className="brand">Wuxing Spa</div>
           <nav>
-            <a href="#services">Services</a>
-            <a href="#experts">Experts</a>
-            <a href="#inspire">Store Inspiration</a>
-            <a href="#contact">Contact</a>
+            <a href="#services">{t.services}</a>
+            <a href="#experts">{t.experts}</a>
+            <a href="#inspire">{t.inspiration}</a>
+            <a href="#contact">{t.contact}</a>
           </nav>
           <div className="actions">
-            <a className="ghost" href="/gift-cards">Gift Card</a>
-            <a className="btn" href="/booking">Book Now</a>
+            <select value={lang} onChange={(e) => setLang(e.target.value as "en" | "zh")}>
+              <option value="en">EN</option>
+              <option value="zh">中文</option>
+            </select>
+            <a className="ghost" href="/gift-cards">{t.gift}</a>
+            <a className="btn" href="/booking">{t.book}</a>
           </div>
         </div>
       </header>
@@ -33,15 +69,12 @@ export default function Home() {
       <section className="hero">
         <div className="hero-overlay" />
         <div className="container hero-content">
-          <p className="kicker">AUTHENTIC CHINESE ACUPRESSURE</p>
-          <h1>Calm your body. Clear your mind.</h1>
-          <p>
-            A clean, breathable, modern spa experience inspired by traditional kung fu
-            acupressure and reflexology techniques.
-          </p>
+          <p className="kicker">{t.kicker}</p>
+          <h1>{t.title}</h1>
+          <p>{t.subtitle}</p>
           <div className="hero-cta">
-            <a className="btn" href="/booking">Book Now</a>
-            <a className="ghost light" href="/gift-cards">Get a Gift Card</a>
+            <a className="btn" href="/booking">{t.book}</a>
+            <a className="ghost light" href="/gift-cards">{t.gift}</a>
           </div>
         </div>
       </section>
@@ -57,7 +90,7 @@ export default function Home() {
                 <p>{s.duration}</p>
                 <div className="row">
                   <strong>{s.price}</strong>
-                  <a href="/booking">Book Now</a>
+                  <a href="/booking">{t.book}</a>
                 </div>
               </div>
             </article>
