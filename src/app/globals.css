@@ -115,8 +115,52 @@ nav a:hover::after { transform: scaleX(1); }
   border: none;
   overflow: hidden;
 }
-.white-panel { background: var(--panel); }
-.dark-panel { background: linear-gradient(180deg, #3a4558, #323b4b); color: #f3efe7; }
+.white-panel { background: var(--panel); position: relative; }
+.dark-panel { background: linear-gradient(180deg, #3a4558, #323b4b); color: #f3efe7; position: relative; }
+
+/* Montage-style soft transitions between sections */
+.hero-panel::after,
+.white-panel::before,
+.white-panel::after,
+.dark-panel::before,
+.dark-panel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-panel::after {
+  bottom: -1px;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(34, 43, 58, 0), rgba(246, 243, 236, 0.95));
+}
+
+.white-panel::before {
+  top: -1px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(48, 56, 70, 0.38), rgba(255, 253, 249, 0));
+}
+
+.white-panel::after {
+  bottom: -1px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(255, 253, 249, 0), rgba(48, 56, 70, 0.30));
+}
+
+.dark-panel::before {
+  top: -1px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(255, 253, 249, 0.65), rgba(58, 69, 88, 0));
+}
+
+.dark-panel::after {
+  bottom: -1px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(58, 69, 88, 0), rgba(47, 56, 72, 0.75));
+}
 
 .hero-panel {
   margin-top: 10px;
