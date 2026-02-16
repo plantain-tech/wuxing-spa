@@ -270,17 +270,35 @@ nav a:hover::after { transform: scaleX(1); }
   margin: 0 auto;
 }
 .testimonial-card {
-  border: 1px solid #ddd7cc;
-  background: rgba(255,255,255,.78);
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(216, 209, 195, 0.9);
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+  backdrop-filter: blur(6px);
   border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 12px 28px rgba(42, 45, 55, 0.08);
+  padding: 20px;
+  box-shadow:
+    0 18px 34px rgba(27, 33, 45, 0.10),
+    0 2px 8px rgba(27, 33, 45, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.65);
+  transition: transform .24s ease, box-shadow .24s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 42px rgba(27, 33, 45, 0.14),
+    0 6px 14px rgba(27, 33, 45, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.68);
 }
 .testimonial-card.featured {
   min-height: 220px;
   display: grid;
   align-content: center;
+}
+.testimonial-card.animate-in {
+  animation: testimonialFadeSlide .55s cubic-bezier(.2, .75, .2, 1) both;
+}
+@keyframes testimonialFadeSlide {
+  0% { opacity: 0; transform: translateY(10px) scale(.992); filter: blur(1.4px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 .carousel-dots {
   display: flex;

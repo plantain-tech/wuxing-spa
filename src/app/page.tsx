@@ -137,7 +137,7 @@ export default function Home() {
         {testimonials.length > 0 ? (
           <>
             <div className="testimonial-carousel">
-              <article className="testimonial-card featured">
+              <article key={testimonials[currentSlide]?.id || currentSlide} className="testimonial-card featured animate-in">
                 <div className="stars">{"★".repeat(Math.max(1, testimonials[currentSlide]?.rating || 5))}</div>
                 <p className="quote">“{testimonials[currentSlide]?.text}”</p>
                 <div className="person">
