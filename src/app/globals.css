@@ -88,7 +88,40 @@ nav a:hover {
 }
 nav a:hover::after { transform: scaleX(1); }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
-.nav-actions select { width: auto; background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.28); }
+.nav-actions select {
+  width: auto;
+  min-width: 86px;
+  padding: 9px 34px 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.42);
+  background-color: rgba(20, 28, 40, 0.58);
+  color: #f7f4ee;
+  font-weight: 600;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #f1e8d8 50%), linear-gradient(135deg, #f1e8d8 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% + 1px), calc(100% - 12px) calc(50% + 1px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.nav-actions select:hover {
+  border-color: rgba(255,255,255,.62);
+  background-color: rgba(20, 28, 40, 0.72);
+}
+.nav-actions select:focus {
+  outline: none;
+  border-color: #f1e8d8;
+  box-shadow: 0 0 0 3px rgba(241, 232, 216, .22), 0 6px 18px rgba(0,0,0,.2);
+}
+.nav-actions select option {
+  color: #1f2430;
+  background: #fff;
+}
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
