@@ -35,13 +35,46 @@ h1, h2, h3, h4 {
 .site-shell { padding: 20px 0 40px; }
 .frame { width: min(1180px, 94%); margin: 0 auto; }
 
-.topbar { margin-bottom: 14px; }
+.topbar {
+  position: sticky;
+  top: 10px;
+  z-index: 90;
+  margin-bottom: 14px;
+}
 .nav-row {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  color: #f3f0e9; padding: 10px 4px;
+  color: #f3f0e9; padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.20);
+  background: rgba(27, 35, 48, 0.66);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 26px rgba(0,0,0,.22);
 }
 .logo { font-weight: 600; font-size: 42px; font-family: var(--font-serif), Georgia, serif; }
 nav { display: none; gap: 18px; color: #d6d8de; }
+nav a {
+  position: relative;
+  padding: 8px 10px;
+  border-radius: 999px;
+  transition: all .22s ease;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #f7ecd7, #c9d7bf);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .22s ease;
+}
+nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+nav a:hover::after { transform: scaleX(1); }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
 .nav-actions select { width: auto; background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.28); }
 
@@ -53,6 +86,20 @@ nav { display: none; gap: 18px; color: #d6d8de; }
 .btn.solid { background: var(--accent); color: #fff; }
 .btn.ghost { background: transparent; border-color: rgba(245,241,232,.45); color: #f5f1e8; }
 .btn.light { border-color: rgba(255,255,255,.7); }
+.topbar .btn {
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+}
+.topbar .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.22);
+}
+.topbar .btn.ghost:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+.topbar .btn.solid:hover {
+  background: #748764;
+}
 
 .white-panel, .dark-panel, .hero-panel {
   border-radius: 28px; border: 1px solid rgba(223,217,205,.7);
