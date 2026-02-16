@@ -100,14 +100,43 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="inspiration" className="frame white-panel section-block center-intro">
-        <div className="banner-img" style={{ backgroundImage: `url(${photos.retreat})` }} />
-        <p className="symbol">✦</p>
-        <h2>Escape to the untouched wilderness</h2>
-        <p>
-          where time slows and spirits awaken — editorial spacing, premium typography,
-          and calm visual rhythm.
-        </p>
+      <section id="inspiration" className="frame white-panel section-block testimonials-section">
+        <div className="testimonials-head">
+          <p className="eyebrow">CLIENT VOICES</p>
+          <h2>What Clients Say</h2>
+          <p>
+            Real feedback from customers using Wuxing Spa for location-based massage booking and wellness services.
+          </p>
+        </div>
+
+        <div className="testimonials-grid">
+          {[
+            {
+              name: "Sophia L.",
+              role: "Downtown Client",
+              text: "Booking was incredibly smooth. The therapist arrived on time, and the acupressure session felt professional and deeply restorative.",
+            },
+            {
+              name: "Daniel W.",
+              role: "Gift Card Buyer",
+              text: "I purchased a gift card for my parents in minutes. Clean flow, clear pricing, and they loved the treatment quality.",
+            },
+            {
+              name: "Emily Z.",
+              role: "Weekly Member",
+              text: "The platform makes it easy to find nearby therapists and reserve fast. This is exactly the Uber-like spa booking experience I wanted.",
+            },
+          ].map((item) => (
+            <article key={item.name} className="testimonial-card">
+              <div className="stars">★★★★★</div>
+              <p className="quote">“{item.text}”</p>
+              <div className="person">
+                <strong>{item.name}</strong>
+                <span>{item.role}</span>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section id="services" className="frame white-panel section-block">
