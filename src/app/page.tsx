@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const copy = {
   en: {
@@ -59,11 +59,19 @@ const features = [
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "zh">("en");
+  const [scrolled, setScrolled] = useState(false);
   const t = copy[lang];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <main className="site-shell">
-      <header className="topbar">
+      <header className={`topbar ${scrolled ? "scrolled" : ""}`}>
         <div className="frame nav-row">
           <div className="logo">Wuxing Spa</div>
           <nav>

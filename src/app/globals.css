@@ -47,7 +47,14 @@ h1, h2, h3, h4 {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   color: #f3f0e9; padding: 10px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.20);
+  border: 1px solid transparent;
+  background: transparent;
+  backdrop-filter: blur(0px);
+  box-shadow: none;
+  transition: border-color .35s ease, background-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease, transform .35s ease;
+}
+.topbar.scrolled .nav-row {
+  border-color: rgba(255,255,255,.20);
   background: rgba(27, 35, 48, 0.66);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 26px rgba(0,0,0,.22);
