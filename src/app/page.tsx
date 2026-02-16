@@ -93,14 +93,10 @@ export default function Home() {
 
       <section className="frame hero-panel">
         <div className="hero-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(9,14,24,.35), rgba(9,14,24,.45)), url(${photos.hero})` }} />
-        <div className="hero-copy">
+        <div className="hero-copy hero-centered">
           <p className="eyebrow">LUXURY WELLNESS RETREAT</p>
           <h1>{t.title}</h1>
           <p>{t.subtitle}</p>
-          <div className="hero-cta">
-            <a className="btn solid" href="/booking">{t.book}</a>
-            <a className="btn ghost light" href="/gift-cards">{t.gift}</a>
-          </div>
         </div>
       </section>
 
