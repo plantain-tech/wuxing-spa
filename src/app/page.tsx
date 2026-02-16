@@ -70,7 +70,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="site-shell">
+    <main className="site-shell home-shell">
       <header className={`topbar ${scrolled ? "scrolled" : ""}`}>
         <div className="frame nav-row">
           <div className="logo">Wuxing Spa</div>
