@@ -33,7 +33,7 @@ h1, h2, h3, h4 {
 }
 
 .site-shell { padding: 20px 0 40px; }
-.frame { width: min(1180px, 94%); margin: 0 auto; }
+.frame { width: 100%; margin: 0; }
 
 .topbar {
   position: sticky;
@@ -42,6 +42,8 @@ h1, h2, h3, h4 {
   margin-bottom: 14px;
 }
 .nav-row {
+  width: min(1180px, 94%);
+  margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   color: #f3f0e9; padding: 10px 14px;
   border-radius: 999px;
@@ -102,11 +104,12 @@ nav a:hover::after { transform: scaleX(1); }
 }
 
 .white-panel, .dark-panel, .hero-panel {
-  border-radius: 28px; border: 1px solid rgba(223,217,205,.7);
+  border-radius: 0;
+  border: none;
   overflow: hidden;
 }
 .white-panel { background: var(--panel); }
-.dark-panel { background: linear-gradient(180deg, #3a4558, #323b4b); color: #f3efe7; border-color: rgba(255,255,255,.18); }
+.dark-panel { background: linear-gradient(180deg, #3a4558, #323b4b); color: #f3efe7; }
 
 .hero-panel {
   margin-top: 10px;
