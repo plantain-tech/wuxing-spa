@@ -29,9 +29,9 @@ const copy = {
 } as const;
 
 const photos = {
-  hero: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
-  retreat: "/ai/002-ultra-realistic-high-resolution-photogra.jpeg",
-  hotspring: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
+  hero: "/ai/001-ultra-realistic-high-resolution-photo-tr.jpeg",
+  retreat: "/ai/home-retreat.jpeg",
+  hotspring: "/ai/home-hotspring.jpeg",
   dining: "/ai/002-ultra-realistic-high-resolution-photogra.jpeg",
   forest: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
 };
