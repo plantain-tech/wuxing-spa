@@ -265,6 +265,10 @@ nav a:hover::after { transform: scaleX(1); }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
+.testimonial-carousel {
+  max-width: 900px;
+  margin: 0 auto;
+}
 .testimonial-card {
   border: 1px solid #ddd7cc;
   background: rgba(255,255,255,.78);
@@ -272,6 +276,29 @@ nav a:hover::after { transform: scaleX(1); }
   border-radius: 18px;
   padding: 18px;
   box-shadow: 0 12px 28px rgba(42, 45, 55, 0.08);
+}
+.testimonial-card.featured {
+  min-height: 220px;
+  display: grid;
+  align-content: center;
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: none;
+  background: #b9b3a8;
+  opacity: .8;
+}
+.dot.active {
+  width: 24px;
+  background: #6a775c;
 }
 .stars {
   letter-spacing: .08em;

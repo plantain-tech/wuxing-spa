@@ -11,7 +11,7 @@ export default async function AdminDashboard() {
     <main className="site-shell">
       <section className="frame white-panel section-block" style={{ marginTop: 28 }}>
         <h1>Admin Dashboard</h1>
-        <p>Bookings overview</p>
+        <p>Bookings overview · <a href="/admin/testimonials" style={{ textDecoration: "underline" }}>Manage Testimonials</a></p>
         <div className="mini-card" style={{ marginTop: 14, padding: 16, overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>

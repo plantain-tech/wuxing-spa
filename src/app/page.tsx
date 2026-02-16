@@ -36,6 +36,14 @@ const photos = {
   forest: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
 };
 
+type Testimonial = {
+  id: string;
+  name: string;
+  role: string;
+  text: string;
+  rating: number;
+};
+
 const features = [
   {
     kicker: "RESTORE & RENEW",
@@ -60,6 +68,8 @@ const features = [
 export default function Home() {
   const [lang, setLang] = useState<"en" | "zh">("en");
   const [scrolled, setScrolled] = useState(false);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const t = copy[lang];
 
   useEffect(() => {
@@ -68,6 +78,21 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    fetch("/api/testimonials")
+      .then((r) => r.json())
+      .then((data) => setTestimonials(Array.isArray(data) ? data : []))
+      .catch(() => setTestimonials([]));
+  }, []);
+
+  useEffect(() => {
+    if (testimonials.length <= 1) return;
+    const id = setInterval(() => {
+      setCurrentSlide((s) => (s + 1) % testimonials.length);
+    }, 4500);
+    return () => clearInterval(id);
+  }, [testimonials.length]);
 
   return (
     <main className="site-shell home-shell">
@@ -109,34 +134,38 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="testimonials-grid">
-          {[
-            {
-              name: "Sophia L.",
-              role: "Downtown Client",
-              text: "Booking was incredibly smooth. The therapist arrived on time, and the acupressure session felt professional and deeply restorative.",
-            },
-            {
-              name: "Daniel W.",
-              role: "Gift Card Buyer",
-              text: "I purchased a gift card for my parents in minutes. Clean flow, clear pricing, and they loved the treatment quality.",
-            },
-            {
-              name: "Emily Z.",
-              role: "Weekly Member",
-              text: "The platform makes it easy to find nearby therapists and reserve fast. This is exactly the Uber-like spa booking experience I wanted.",
-            },
-          ].map((item) => (
-            <article key={item.name} className="testimonial-card">
+        {testimonials.length > 0 ? (
+          <>
+            <div className="testimonial-carousel">
+              <article className="testimonial-card featured">
+                <div className="stars">{"★".repeat(Math.max(1, testimonials[currentSlide]?.rating || 5))}</div>
+                <p className="quote">“{testimonials[currentSlide]?.text}”</p>
+                <div className="person">
+                  <strong>{testimonials[currentSlide]?.name}</strong>
+                  <span>{testimonials[currentSlide]?.role}</span>
+                </div>
+              </article>
+            </div>
+            <div className="carousel-dots">
+              {testimonials.map((item, i) => (
+                <button
+                  key={item.id}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  className={`dot ${i === currentSlide ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(i)}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="testimonials-grid">
+            <article className="testimonial-card">
               <div className="stars">★★★★★</div>
-              <p className="quote">“{item.text}”</p>
-              <div className="person">
-                <strong>{item.name}</strong>
-                <span>{item.role}</span>
-              </div>
+              <p className="quote">“No testimonials yet. Add reviews from admin panel.”</p>
+              <div className="person"><strong>Wuxing Spa</strong><span>System</span></div>
             </article>
-          ))}
-        </div>
+          </div>
+        )}
       </section>
 
       <section id="services" className="frame white-panel section-block">
