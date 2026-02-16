@@ -11,7 +11,8 @@ const copy = {
     gift: "Gift Card",
     book: "Book Now",
     title: "Where Nature Whispers",
-    subtitle: "Luxury acupressure and reflexology retreat crafted for deep rest and modern recovery.",
+    subtitle:
+      "Luxury acupressure and reflexology retreat crafted for deep rest and modern recovery.",
     journey: "Curated Moments of Wonder",
   },
   zh: {
@@ -27,10 +28,33 @@ const copy = {
   },
 } as const;
 
+const photos = {
+  hero: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=80",
+  retreat: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1400&q=80",
+  hotspring: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+  dining: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+  forest: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+};
+
 const features = [
-  { kicker: "RESTORE & RENEW", title: "Holistic Wellness Sanctuary", body: "Traditional pressure techniques, warm herbal touch, and mindful rhythm in one seamless journey." },
-  { kicker: "NOURISHMENT", title: "Farm-to-Forest Calm", body: "A spa ritual inspired by mountain air, warm earth tones, and restorative breathing space." },
-  { kicker: "MINDFUL IMMERSION", title: "Shinrin-Yoku Reset", body: "Slow down, breathe deep, and let your nervous system settle into natural balance." },
+  {
+    kicker: "RESTORE & RENEW",
+    title: "Holistic Wellness Sanctuary",
+    body: "Traditional pressure techniques, warm herbal touch, and mindful rhythm in one seamless journey.",
+    image: photos.hotspring,
+  },
+  {
+    kicker: "NOURISHMENT",
+    title: "Farm-to-Forest Cuisine",
+    body: "A spa ritual inspired by mountain air, warm earth tones, and restorative breathing space.",
+    image: photos.dining,
+  },
+  {
+    kicker: "MINDFUL IMMERSION",
+    title: "Shinrin-Yoku Forest Bathing",
+    body: "Slow down, breathe deep, and let your nervous system settle into natural balance.",
+    image: photos.forest,
+  },
 ];
 
 export default function Home() {
@@ -60,7 +84,7 @@ export default function Home() {
       </header>
 
       <section className="frame hero-panel">
-        <div className="hero-image" />
+        <div className="hero-image" style={{ backgroundImage: `linear-gradient(180deg, rgba(9,14,24,.35), rgba(9,14,24,.45)), url(${photos.hero})` }} />
         <div className="hero-copy">
           <p className="eyebrow">LUXURY WELLNESS RETREAT</p>
           <h1>{t.title}</h1>
@@ -73,9 +97,13 @@ export default function Home() {
       </section>
 
       <section id="inspiration" className="frame white-panel section-block center-intro">
+        <div className="banner-img" style={{ backgroundImage: `url(${photos.retreat})` }} />
         <p className="symbol">✦</p>
         <h2>Escape to the untouched wilderness</h2>
-        <p>Where time slows and spirit awakens. Clean composition, generous whitespace, and premium editorial typography.</p>
+        <p>
+          where time slows and spirits awaken — editorial spacing, premium typography,
+          and calm visual rhythm.
+        </p>
       </section>
 
       <section id="services" className="frame white-panel section-block">
@@ -83,7 +111,7 @@ export default function Home() {
         <div className="feature-stack">
           {features.map((f, i) => (
             <article key={f.title} className={`feature-row ${i % 2 ? "flip" : ""}`}>
-              <div className="feature-photo" />
+              <div className="feature-photo" style={{ backgroundImage: `url(${f.image})` }} />
               <div className="feature-copy">
                 <p className="eyebrow">{f.kicker}</p>
                 <h3>{f.title}</h3>
@@ -97,9 +125,9 @@ export default function Home() {
       <section id="experts" className="frame white-panel section-block">
         <h2 className="center">Expert Therapists</h2>
         <div className="cards-3">
-          {["Master Lin", "May", "Chen"].map((n) => (
-            <article key={n} className="mini-card">
-              <div className="avatar" />
+          {["Master Lin", "May", "Chen"].map((n, i) => (
+            <article key={n} className="mini-card padded-card">
+              <div className="avatar" style={{ backgroundImage: `url(${[photos.forest, photos.hotspring, photos.dining][i]})` }} />
               <h4>{n}</h4>
               <p>Senior Acupressure Specialist</p>
             </article>
@@ -110,7 +138,10 @@ export default function Home() {
       <section id="contact" className="frame dark-panel section-block contact-grid">
         <div>
           <h2>Begin Your Journey</h2>
-          <p>Reserve your place in calm. Our concierge team is available to design a complete wellness experience for you.</p>
+          <p>
+            Reserve your place in calm. Our concierge team is available to design a
+            complete wellness experience for you.
+          </p>
           <a className="btn ghost light" href="/booking">Reserve Your Stay</a>
         </div>
         <div>
