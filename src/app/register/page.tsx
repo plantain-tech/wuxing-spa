@@ -15,15 +15,17 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="container section" style={{ paddingTop: 110, maxWidth: 500 }}>
-      <h1>Register</h1>
-      <div className="card pad" style={{ display: "grid", gap: 10 }}>
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
-        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" />
-        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-        <button className="btn" onClick={submit}>Create account</button>
-        {msg && <p>{msg}</p>}
-      </div>
+    <main className="site-shell">
+      <section className="frame white-panel section-block auth-shell" style={{ marginTop: 28 }}>
+        <h1>Create Account</h1>
+        <div className="mini-card" style={{ padding: 20 }}>
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+          <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" />
+          <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+          <button className="btn solid" onClick={submit}>Create account</button>
+          {msg && <p>{msg}</p>}
+        </div>
+      </section>
     </main>
   );
 }
