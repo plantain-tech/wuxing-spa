@@ -29,11 +29,11 @@ const copy = {
 } as const;
 
 const photos = {
-  hero: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=80",
-  retreat: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1400&q=80",
-  hotspring: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-  dining: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
-  forest: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+  hero: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
+  retreat: "/ai/002-ultra-realistic-high-resolution-photogra.jpeg",
+  hotspring: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
+  dining: "/ai/002-ultra-realistic-high-resolution-photogra.jpeg",
+  forest: "/ai/001-ultra-realistic-high-resolution-photogra.jpeg",
 };
 
 const features = [
